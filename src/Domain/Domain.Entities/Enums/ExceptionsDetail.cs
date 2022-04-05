@@ -5,6 +5,9 @@ namespace Domain.Model.Enums
     public enum ExceptionsDetail
     {
         [Description("Unhandled business exception.")]
-        UnhandledException = 1
+        UnhandledException = 1,
+
+        [Description("User not found")]
+        UserNotFound = 2
     }
 }

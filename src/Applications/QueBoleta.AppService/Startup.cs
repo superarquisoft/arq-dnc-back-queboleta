@@ -53,6 +53,7 @@ namespace QueBoleta.AppService
             services.Configure<QueBoletaAppSettings>(Configuration.GetSection(nameof(QueBoletaAppSettings)));
             AppSettings = Configuration.GetSection(nameof(QueBoletaAppSettings)).Get<QueBoletaAppSettings>();
 
+            services.AddServices();
             services.AddSwagger();
 
             #region Logging
@@ -67,11 +68,19 @@ namespace QueBoleta.AppService
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.AppSwagger();
             }
 
+            app.AppSwagger();
             app.UseHttpsRedirection();
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }

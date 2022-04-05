@@ -1,15 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0-ios</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Domain\Domain.Entities\Domain.Model.csproj" />
-    <ProjectReference Include="..\..\..\Domain\Domain.Interfaces\Domain.Interfaces.csproj" />
-    <ProjectReference Include="..\..\Helpers\Helpers.Commons\Helpers.Commons.csproj" />
-  </ItemGroup>
+	<PropertyGroup>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<NoWarn>$(NoWarn);1591</NoWarn>
+		<DocumentationFile>bin\Debug\net6.0\EntryPoint.ReactiveWeb.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Domain\Domain.Entities\Domain.Model.csproj" />
+		<ProjectReference Include="..\..\Helpers\Helpers.Commons\Helpers.Commons.csproj" />
+	</ItemGroup>
 
 </Project>

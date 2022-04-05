@@ -6,5 +6,10 @@
         /// Application Name
         /// </summary>
         public string AppName { get; set; }
+
+        /// <summary>
+        /// JwtConfig
+        /// </summary>
+        public JwtConfig JwtConfig { get; set; }
     }
 }

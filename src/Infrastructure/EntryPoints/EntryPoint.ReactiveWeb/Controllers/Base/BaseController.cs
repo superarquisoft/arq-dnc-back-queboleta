@@ -33,7 +33,7 @@ namespace EntryPoint.ReactiveWeb.Controllers.Base
         public async Task<IActionResult> HandleRequestAsync<TResult>(Func<Task<TResult>> requestHandler)
         {
             MethodBase? method = MethodBase.GetCurrentMethod();
-            string function = string.Empty, message = string.Empty;
+            string? function = Request.Path.Value, message = string.Empty;
             int errorCode = 0;
             bool error = false;
             dynamic? data = null;

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.OpenApi.Models;
 using System;
 using System.IO;
@@ -20,21 +21,21 @@ namespace QueBoleta.AppService.Configuration
         public static IServiceCollection AddSwagger(this IServiceCollection services)
         {
             #region Swagger
+            services.AddControllers();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "API",
+                    Title = "QueBoleta API",
                     Version = "v1",
-                    Description = "An API to perform Employee operations",
+                    Description = "API Information",
                 });
 
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
-
-            services.AddControllers();
             #endregion Swagger
 
             return services;
@@ -46,7 +47,7 @@ namespace QueBoleta.AppService.Configuration
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/    v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
             return app;

@@ -3,7 +3,7 @@ using System;
 
 namespace Domain.Model.Entities.Users
 {
-    public class User : BaseEntity<long>
+    public class User : BaseEntity<Guid>
     {
         /// <summary>
         /// TypeDocument
