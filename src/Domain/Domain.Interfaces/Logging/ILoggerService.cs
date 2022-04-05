@@ -6,58 +6,53 @@ namespace Domain.Interfaces.Logging
     public interface ILoggerService<TEntity>
     {
         /// <summary>
-        /// LogTrace
+        /// Consoles the error log.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="message"></param>
-        /// <param name="methodBase"></param>
-        /// <param name="callerMemberName"></param>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        Task LogTrace(string id, string message, MethodBase methodBase, [CallerMemberName] string? callerMemberName = null, object? data = null);
+        /// <param name="message">The message.</param>
+        /// <param name="methodBase">The method base.</param>
+        /// <param name="exception">The exception.</param>
+        /// <param name="callerMemberName">Name of the caller member.</param>
+        void ConsoleErrorLog(string message, MethodBase methodBase, Exception exception,
+            [CallerMemberName] string? callerMemberName = null);
 
         /// <summary>
-        /// LogDebug
+        /// Consoles the information log.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="message"></param>
-        /// <param name="methodBase"></param>
-        /// <param name="callerMemberName"></param>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        Task LogDebug(string id, string message, MethodBase methodBase, [CallerMemberName] string? callerMemberName = null, object? data = null);
+        /// <param name="message">The message.</param>
+        /// <param name="methodBase">The method base.</param>
+        /// <param name="data">The data.</param>
+        /// <param name="callerMemberName">Name of the caller member.</param>
+        void ConsoleInfoLog(string message, MethodBase methodBase, object? data = null,
+            [CallerMemberName] string? callerMemberName = null);
 
         /// <summary>
-        /// LogInfo
+        /// Consoles the trace log.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="message"></param>
-        /// <param name="methodBase"></param>
-        /// <param name="callerMemberName"></param>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        Task LogInfo(string id, string message, MethodBase methodBase, [CallerMemberName] string? callerMemberName = null, object? data = null);
+        /// <param name="message">The message.</param>
+        /// <param name="methodBase">The method base.</param>
+        /// <param name="data">The data.</param>
+        /// <param name="callerMemberName">Name of the caller member.</param>
+        void ConsoleTraceLog(string message, MethodBase methodBase, object? data = null,
+            [CallerMemberName] string? callerMemberName = null);
 
         /// <summary>
-        /// LogWarning
+        /// Consoles the warning log.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="exception"></param>
-        /// <param name="methodBase"></param>
-        /// <param name="callerMemberName"></param>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        Task LogWarning(string id, Exception exception, MethodBase methodBase, [CallerMemberName] string? callerMemberName = null, object? data = null);
+        /// <param name="message">The message.</param>
+        /// <param name="methodBase">The method base.</param>
+        /// <param name="data">The data.</param>
+        /// <param name="callerMemberName">Name of the caller member.</param>
+        public void ConsoleWarningLog(string message, MethodBase methodBase, object? data = null,
+            [CallerMemberName] string? callerMemberName = null);
 
         /// <summary>
-        /// LogError
+        /// Consoles the process log.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="data"></param>
-        /// <param name="exception"></param>
-        /// <param name="methodBase"></param>
-        /// <param name="callerMemberName"></param>
-        /// <returns></returns>
-        Task LogError(string id, object data, Exception exception, MethodBase methodBase, [CallerMemberName] string? callerMemberName = null);
+        /// <param name="eventName">Name of the event.</param>
+        /// <param name="id">The identifier.</param>
+        /// <param name="data">The data.</param>
+        /// <param name="callerMemberName">Name of the caller member.</param>
+        void ConsoleProcessLog(string eventName, string id, object? data = null,
+            [CallerMemberName] string? callerMemberName = null);
     }
 }

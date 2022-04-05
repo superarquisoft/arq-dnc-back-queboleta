@@ -1,6 +1,12 @@
-﻿namespace QueBoleta.AppService.Automapper
+﻿using AutoMapper;
+
+namespace QueBoleta.AppService.Automapper
 {
-    public class EntityProfile
+    public class EntityProfile : Profile
     {
+        public EntityProfile()
+        {
+            //CreateMap<>();
+        }
     }
 }

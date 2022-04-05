@@ -1,7 +1,7 @@
-﻿using Domain.Model.Base;
+﻿using Domain.Model.Entities.Base;
 using System;
 
-namespace Domain.Model.Users
+namespace Domain.Model.Entities.Users
 {
     public class User : BaseEntity<long>
     {
@@ -49,5 +49,7 @@ namespace Domain.Model.Users
         /// IsAdult
         /// </summary>
         public bool IsAdult { get; set; }
+
+        public string GetFullName() => $"{FirstName} {LastName}";
     }
 }

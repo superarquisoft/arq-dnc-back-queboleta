@@ -1,9 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net6.0-ios</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Domain\Domain.Entities\Domain.Model.csproj" />
+    <ProjectReference Include="..\..\..\Domain\Domain.Interfaces\Domain.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Helpers\Helpers.Commons\Helpers.Commons.csproj" />
+  </ItemGroup>
 
 </Project>

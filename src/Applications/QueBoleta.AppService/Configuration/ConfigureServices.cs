@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Domain.Interfaces.Logging;
+using Helpers.Commons.Logging;
+using Microsoft.Extensions.DependencyInjection;
+using QueBoleta.AppService.Automapper;
 
 namespace QueBoleta.AppService.Configuration
 {
@@ -14,8 +17,16 @@ namespace QueBoleta.AppService.Configuration
         /// <returns></returns>
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
+            #region AutoMapper
+            services.AddAutoMapper(typeof(EntityProfile));
+            #endregion AutoMapper
+
             #region UseCase
             #endregion UseCase
+
+            #region Helpers
+            services.AddScoped(typeof(ILoggerService<>), typeof(LoggerService<>));
+            #endregion Helpers
 
             return services;
         }

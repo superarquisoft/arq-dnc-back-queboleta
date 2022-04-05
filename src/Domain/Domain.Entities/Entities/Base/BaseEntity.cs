@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Domain.Model.Base
+namespace Domain.Model.Entities.Base
 {
-    public abstract class BaseEntity<TId>
+    public abstract class BaseEntity<TId> : ICloneable
     {
         /// <summary>
         /// Id
@@ -17,7 +17,7 @@ namespace Domain.Model.Base
         /// <summary>
         /// CreatedBy
         /// </summary>
-        public string? CreatedBy { get; set; }
+        public string CreatedBy { get; set; }
 
         /// <summary>
         /// LastModified
@@ -27,6 +27,15 @@ namespace Domain.Model.Base
         /// <summary>
         /// LastModifiedBy
         /// </summary>
-        public string? LastModifiedBy { get; set; }
+        public string LastModifiedBy { get; set; }
+
+        /// <summary>
+        /// Clone the current entity
+        /// </summary>
+        /// <returns></returns>
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
     }
 }

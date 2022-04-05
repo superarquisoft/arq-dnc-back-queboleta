@@ -19,7 +19,7 @@ namespace QueBoleta.AppService
         /// <param name="args"></param>
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            CreateWebHostBuilder(args).Build().Run();
         }
 
         /// <summary>
@@ -27,23 +27,18 @@ namespace QueBoleta.AppService
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        public static IHostBuilder CreateHostBuilder(string[] args)
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
         {
             var config = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables()
                 .Build();
 
-            return Host.CreateDefaultBuilder(args)
-                .UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration))
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder
+            return WebHost.CreateDefaultBuilder(args)
                     .UseIISIntegration()
-                    .UseConfiguration(config)
+                    .UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration))
                     .UseStartup<Startup>();
-                });
-        }      
+        }
 
     }
 }
