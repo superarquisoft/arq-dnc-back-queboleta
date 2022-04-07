@@ -1,4 +1,4 @@
-﻿using Domain.Interfaces.Authentication;
+﻿using Domain.Interfaces.Auth;
 using Domain.Interfaces.Logging;
 using Domain.Model.Entities.Token;
 using Domain.Model.Entities.Users;
@@ -18,7 +18,7 @@ namespace EntryPoint.ReactiveWeb.Controllers.V1.Auth
     /// </summary>
     [Produces("application/json")]
     [ApiVersion("1.0")]
-    [Route("api/[controller]/[action]")]
+    [Route("api/v{version:apiVersion}/[controller]/[action]")]
     public class AuthController : BaseController<AuthController>
     {
         private readonly ILoggerService<AuthController> _loggerService;
@@ -79,9 +79,12 @@ namespace EntryPoint.ReactiveWeb.Controllers.V1.Auth
             await HandleRequestAsync<TokenConfig>(async () =>
             {
                 User user = login.MapDto<LoginDto,User>();
-                TokenConfig tokenConfig = await _authUseCase.loginUser();
+                //TokenConfig tokenConfig = await _authUseCase.loginUser();
 
-                return tokenConfig;
+                //return tokenConfig;
+
+                await Task.Delay(3000);
+                return new TokenConfig();
             });
 
 

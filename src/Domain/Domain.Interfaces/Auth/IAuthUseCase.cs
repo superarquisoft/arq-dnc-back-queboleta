@@ -2,7 +2,7 @@
 using Domain.Model.Entities.Users;
 using System.Threading.Tasks;
 
-namespace Domain.Interfaces.Authentication
+namespace Domain.Interfaces.Auth
 {
     public interface IAuthUseCase
     {

@@ -1,6 +1,7 @@
 ﻿using Helpers.Commons.AppSettings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -17,7 +18,7 @@ namespace QueBoleta.AppService
         /// </summary>
         private readonly ILogger<Startup> _logger;
 
-        // <summary>
+        /// <summary>
         /// EnvironmentHost
         /// </summary>
         public IWebHostEnvironment EnvironmentHost { get; }
@@ -37,6 +38,7 @@ namespace QueBoleta.AppService
         /// </summary>
         /// <param name="configuration"></param>
         /// <param name="environment"></param>
+        /// <param name="logger"></param>
         public Startup(IConfiguration configuration, IWebHostEnvironment environment, ILogger<Startup> logger)
         {
             Configuration = configuration;
@@ -53,8 +55,14 @@ namespace QueBoleta.AppService
             services.Configure<QueBoletaAppSettings>(Configuration.GetSection(nameof(QueBoletaAppSettings)));
             AppSettings = Configuration.GetSection(nameof(QueBoletaAppSettings)).Get<QueBoletaAppSettings>();
 
+            #region Mongo
+            string mongoConn = Configuration.GetValue<string>("MongoConfiguration:ConnectionString");
+            string mongoDb = Configuration.GetValue<string>("MongoConfiguration:Database");
+            services.AddSingleton<IContextConfig>
+            #endregion Mongo
+
             services.AddServices();
-            services.AddSwagger();
+            services.AddSwaggerAndVersioning();
 
             #region Logging
             _logger.LogInformation("================= STARTUP =================");
@@ -63,14 +71,14 @@ namespace QueBoleta.AppService
         }
 
 
-        public void Configure(IApplicationBuilder app, IHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostEnvironment env, IApiVersionDescriptionProvider provider)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.AppSwagger();
+            app.AppSwaggerUI(provider);
             app.UseHttpsRedirection();
             app.UseRouting();
 

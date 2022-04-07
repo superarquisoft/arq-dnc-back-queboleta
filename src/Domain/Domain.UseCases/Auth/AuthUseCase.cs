@@ -1,4 +1,4 @@
-﻿using Domain.Interfaces.Authentication;
+﻿using Domain.Interfaces.Auth;
 using Domain.Model.Entities.Token;
 using Domain.Model.Entities.Users;
 using Domain.Model.Enums;

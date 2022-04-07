@@ -25,7 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EntryPoints", "EntryPoints"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helpers", "Helpers", "{1315BEA8-CDF3-48C2-9A68-9D463DE253DE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrivenAdapter.Sql", "src\Infrastructure\DrivenAdapters\DrivenAdapter.Sql\DrivenAdapter.Sql.csproj", "{755AF187-CBB7-4021-B910-DDB3C1C52EE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrivenAdapter.Mongo", "src\Infrastructure\DrivenAdapters\DrivenAdapter.Sql\DrivenAdapter.Mongo.csproj", "{755AF187-CBB7-4021-B910-DDB3C1C52EE4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrivenAdapter.SendGrid", "src\Infrastructure\DrivenAdapters\DrivenAdapter.SendGrid\DrivenAdapter.SendGrid.csproj", "{F701FE83-4E4A-457D-8769-729B1A9D0179}"
 EndProject
@@ -35,7 +35,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helpers.Commons", "src\Infr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueBoleta.AppService", "src\Applications\QueBoleta.AppService\QueBoleta.AppService.csproj", "{157D200E-2224-41EF-A80B-7CA57BBDDA93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntryPoint.ReactiveWeb", "src\Infrastructure\EntryPoints\EntryPoint.ReactiveWeb\EntryPoint.ReactiveWeb.csproj", "{5A37F12A-315A-48F1-AA1F-EE13FCD0CA13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntryPoint.ReactiveWeb", "src\Infrastructure\EntryPoints\EntryPoint.ReactiveWeb\EntryPoint.ReactiveWeb.csproj", "{5A37F12A-315A-48F1-AA1F-EE13FCD0CA13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
